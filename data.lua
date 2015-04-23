@@ -14,10 +14,9 @@ local ptb_path = "./data/"
 local trainfn = ptb_path .. "ptb.train.txt"
 local testfn  = ptb_path .. "ptb.test.txt"
 local validfn = ptb_path .. "ptb.valid.txt"
---[[
+
 local trainfn = ptb_path .. "ptb.char.train.txt"
 local validfn = ptb_path .. "ptb.char.valid.txt"
---]]
 
 local vocab_idx = 0
 local vocab_map = {}
@@ -39,7 +38,7 @@ local function load_data(fname)
    local data = file.read(fname)
    data = stringx.replace(data, '\n', '<eos>')
    data = stringx.split(data)
-   --print(string.format("Loading %s, size of data = %d", fname, #data))
+
    local x = torch.zeros(#data)
    for i = 1, #data do
       if vocab_map[data[i]] == nil then
